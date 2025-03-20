@@ -29,17 +29,21 @@ export async function registerAction(formData: FormData) {
 export async function loginAction(formData: FormData) {
     const username = formData.get('username') as string
     const password = formData.get('password') as string
-    const user = await db.getUserByUsername(username)
-    const valid = await compare(password, user.password)
-    if (!valid) {
+    try {
+        const user = await db.getUserByUsername(username)
+        const valid = await compare(password, user.password)
+        if (!valid) {
+            throw Error()
+        }
+        const session = SessionModel.fromUser(user)
+        await updateSession({
+            ...session,
+            credits: 10
+        })
+        redirect(DASHBOARD, RedirectType.replace)
+    } catch {
         return 'Username/Password incorrect'
     }
-    const session = SessionModel.fromUser(user)
-    await updateSession({
-        ...session,
-        credits: 10
-    })
-    redirect(DASHBOARD, RedirectType.replace)
 }
 
 
