@@ -22,6 +22,7 @@ const RegisterPage = () => (
                 placeholder="Enter password"
                 name="password"
                 type="password"
+                className="mt-5"
             />
         </Form>
         <p className="text-base">
