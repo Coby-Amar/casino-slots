@@ -10,7 +10,7 @@ import Button from "~/components/Buttons/Button";
 import LoseModal from "./modals/LoseModal";
 import WonModal from "./modals/WonModal";
 
-export default async function Casino({ searchParams }: PageSearchParams) {
+const DashboardPage = async ({ searchParams }: PageSearchParams) => {
     const { topup = false, cashin = false, lost = false, won = 0 } = await searchParams
     const { credits } = await getSessionModel()
     return (
@@ -40,3 +40,5 @@ export default async function Casino({ searchParams }: PageSearchParams) {
         </>
     );
 }
+
+export default DashboardPage

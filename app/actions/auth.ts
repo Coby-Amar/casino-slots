@@ -34,9 +34,7 @@ export async function loginAction(formData: FormData) {
     if (!valid) {
         return 'Username/Password incorrect'
     }
-    console.log('user: ', user)
     const session = SessionModel.fromUser(user)
-    console.log('session: ', session)
     await updateSession({
         ...session,
         credits: 10

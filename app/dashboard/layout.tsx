@@ -6,7 +6,7 @@ import Button from "~/components/Buttons/Button";
 import { getSessionModel, isSessionLoggedin } from "~/utils";
 import ButtonLink from "~/components/Buttons/ButtonLink";
 
-export default async function AuthLayout({ children }: HasChildren) {
+const DashboardLayout = async ({ children }: LayoutProps) => {
     const isLoggedin = await isSessionLoggedin()
     if (!isLoggedin) {
         redirect(LOGIN, RedirectType.replace)
@@ -36,3 +36,5 @@ export default async function AuthLayout({ children }: HasChildren) {
         </main >
     )
 }
+
+export default DashboardLayout

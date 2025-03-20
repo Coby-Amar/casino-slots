@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "Slot Casino Game",
 };
 
-export default function RootLayout({ children }: HasChildren) {
+export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en" className="text-base">
       <body
